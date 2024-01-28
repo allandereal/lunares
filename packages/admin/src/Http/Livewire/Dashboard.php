@@ -141,6 +141,7 @@ class Dashboard extends Component
         $orderTable = (new Order())->getTable();
         $orderLineTable = (new OrderLine())->getTable();
         $variantsTable = (new ProductVariant())->getTable();
+        $productsTable = (new Product())->getTable();
 
         return OrderLine::select([
             'purchasable_type',
@@ -157,7 +158,13 @@ class Dashboard extends Component
         ])->join($variantsTable, function ($join) use ($variantsTable, $orderLineTable) {
             $join->on("{$variantsTable}.id", '=', "{$orderLineTable}.purchasable_id")
                 ->where('purchasable_type', '=', ProductVariant::class);
-        })->groupBy('purchasable_type', 'purchasable_id')
+        })->join(
+            $productsTable,
+            "{$productsTable}.id",
+            '=',
+            "{$variantsTable}.product_id"
+        )->where("{$productsTable}.store_id", request()->user()?->store_id)
+            ->groupBy('purchasable_type', 'purchasable_id')
             ->orderBy('count', 'desc')
             ->take(2)->get();
     }

@@ -204,16 +204,4 @@ class ProductVariant extends BaseModel implements Purchasable
             return (bool) $media->pivot?->primary;
         }) ?: $this->product->thumbnail;
     }
-
-    /**
-     * The "booted" method of the model.
-     */
-    protected static function booted(): void
-    {
-        static::addGlobalScope('sameStore', function (Builder $builder){
-            $builder->whereHas('product', function ($query){
-                $query->where('store_id', request()->user()?->store_id);
-            });
-        });
-    }
 }
