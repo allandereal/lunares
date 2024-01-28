@@ -54,7 +54,6 @@ class Store extends BaseModel
         'phone',
         'address',
         'logo',
-        'address',
         'status',
         'content',
     ];
