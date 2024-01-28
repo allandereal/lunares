@@ -13,6 +13,8 @@ class SameStore implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
-        $builder->where('store_id', request()->user()?->store_id);
+        if(auth()->check()){
+            $builder->where('store_id', request()->user()?->store_id);
+        }
     }
 }
