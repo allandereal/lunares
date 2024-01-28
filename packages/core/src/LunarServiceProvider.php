@@ -345,13 +345,13 @@ class LunarServiceProvider extends ServiceProvider
 
         Blueprint::macro('blamable', function ($column = 'created_by') {
             /** @var Blueprint $this */
-            $this->userForeignKey($column);
+            $this->userForeignKey(field_name: $column, nullable: true);
         });
 
         Blueprint::macro('blamables', function () {
             /** @var Blueprint $this */
-            $this->userForeignKey('created_by');
-            $this->userForeignKey('updated_by');
+            $this->userForeignKey(field_name: 'created_by', nullable: true);
+            $this->userForeignKey(field_name: 'updated_by', nullable: true);
         });
     }
 }
