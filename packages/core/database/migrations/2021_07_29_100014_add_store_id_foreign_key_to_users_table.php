@@ -13,7 +13,7 @@ class AddStoreIdForeignKeyToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table($this->prefix.'users', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->foreign('store_id')
                 ->references('id')
                 ->on($this->prefix.'store')
@@ -29,7 +29,7 @@ class AddStoreIdForeignKeyToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table($this->prefix.'users', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropForeign('store_id');
         });
     }
