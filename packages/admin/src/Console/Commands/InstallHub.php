@@ -5,6 +5,7 @@ namespace Lunar\Hub\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Lunar\Hub\Models\Staff;
+use Lunar\Models\Store;
 
 class InstallHub extends Command
 {
@@ -57,6 +58,7 @@ class InstallHub extends Command
                 'email' => $email,
                 'password' => bcrypt($password),
                 'admin' => true,
+                'store_id' => Store::first()?->id,
             ]);
 
             $staff->syncRoles('admin');

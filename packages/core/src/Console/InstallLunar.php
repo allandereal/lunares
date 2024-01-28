@@ -18,6 +18,7 @@ use Lunar\Models\CustomerGroup;
 use Lunar\Models\Language;
 use Lunar\Models\Product;
 use Lunar\Models\ProductType;
+use Lunar\Models\Store;
 use Lunar\Models\TaxClass;
 
 class InstallLunar extends Command
@@ -234,6 +235,23 @@ class InstallLunar extends Command
                 $type->mappedAttributes()->attach(
                     Attribute::whereAttributeType(Product::class)->get()->pluck('id')
                 );
+            }
+
+            if (! Store::count()) {
+                $this->info('Adding default store');
+
+                Store::create([
+                    'name' => 'Default Store',
+                    'email' => 'sstore@gmail.com',
+                    'phone' => '256773232124',
+                    'address' => 'E-Tower Kla RD',
+                    'logo' => 'https://logo.com/img.png',
+                    'status' => 1,
+                    'content' => [
+                        'name' => 'Name in content',
+                        'description' => 'Description in content',
+                    ],
+                ]);
             }
         });
 
