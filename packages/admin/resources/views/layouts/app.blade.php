@@ -19,7 +19,7 @@
 
     @livewireTableStyles
 
-    <link href="{{ asset('vendor/allandereal/admin-hub/app.css?v=1') }}"
+    <link href="{{ asset('vendor/lunar/admin-hub/app.css?v=1') }}"
           rel="stylesheet">
 
     @if ($styles = \Lunar\Hub\LunarHub::styles())
@@ -105,7 +105,7 @@
     @endforeach
 @endif
 
-<script src="{{ asset('vendor/allandereal/admin-hub/app.js') }}"></script>
+<script src="{{ asset('vendor/lunar/admin-hub/app.js') }}"></script>
 </body>
 
 </html>
