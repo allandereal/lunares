@@ -1,11 +1,11 @@
 {
-  "name": "lunarphp/lunar",
-  "description": "Lunar Monorepo",
+  "name": "allandereal/lunares",
+  "description": "Lunares Monorepo",
   "license": "MIT",
   "authors": [
     {
-      "name": "LunarPHP",
-      "homepage": "https://lunarphp.io/"
+      "name": "Allan Ahumuza",
+      "homepage": "https://github.com/allandereal/"
     },
     {
       "name": "Lunar",
