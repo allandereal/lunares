@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Lunar\Base\Migration;
 
-class AddStoreIdForeignKeyToUsersTable extends Migration
+class AddStoreIdForeignKeyToStaffTable extends Migration
 {
     /**
      * Run the migrations.
