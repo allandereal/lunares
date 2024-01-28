@@ -203,4 +203,12 @@ class Product extends BaseModel implements SpatieHasMedia
             'priceable_id'
         )->wherePriceableType(ProductVariant::class);
     }
+
+    /**
+     * Return the store relationship.
+     */
+    public function store(): BelongsTo
+    {
+        return $this->belongsTo(Store::class);
+    }
 }
