@@ -146,6 +146,6 @@ class Staff extends Authenticatable
      */
     protected static function booted(): void
     {
-        static::addGlobalScope(new SameStore);
+        static::addGlobalScope('sameStore', new SameStore);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Lunar\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -209,6 +210,10 @@ class ProductVariant extends BaseModel implements Purchasable
      */
     protected static function booted(): void
     {
-        static::addGlobalScope(new SameStore);
+        static::addGlobalScope('sameStore', function (Builder $builder){
+            $builder->whereHas('product', function ($query){
+                $query->where('store_id', request()->user()?->store_id);
+            });
+        });
     }
 }

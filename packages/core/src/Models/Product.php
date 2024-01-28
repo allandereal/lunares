@@ -218,6 +218,6 @@ class Product extends BaseModel implements SpatieHasMedia
      */
     protected static function booted(): void
     {
-        static::addGlobalScope(new SameStore);
+        static::addGlobalScope('sameStore', new SameStore);
     }
 }
