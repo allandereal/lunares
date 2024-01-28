@@ -16,7 +16,7 @@ class AddStoreIdForeignKeyToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->foreign('store_id')
                 ->references('id')
-                ->on($this->prefix.'store')
+                ->on($this->prefix.'stores')
                 ->restrictOnDelete()
                 ->cascadeOnUpdate();
         });
