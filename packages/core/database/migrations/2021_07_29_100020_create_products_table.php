@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('status')->index();
             $table->json('attribute_data');
             $table->string('brand')->nullable()->index();
+            $table->blamable();
             $table->timestamps();
             $table->softDeletes();
         });
