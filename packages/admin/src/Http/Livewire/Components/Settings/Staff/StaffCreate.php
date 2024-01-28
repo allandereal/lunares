@@ -48,6 +48,7 @@ class StaffCreate extends AbstractStaff
 
         $this->staff->password = Hash::make($this->password);
         $this->staff->admin = (bool) $this->staff->admin;
+        $this->staff->store_id = request()->user()->store_id;
 
         $this->staff->save();
 
