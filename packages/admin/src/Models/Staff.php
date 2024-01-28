@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Lunar\Hub\Database\Factories\StaffFactory;
+use Lunar\Models\Scopes\SameStore;
 use Spatie\Permission\Traits\HasRoles;
 
 class Staff extends Authenticatable
@@ -138,5 +139,13 @@ class Staff extends Authenticatable
     public function savedSearches()
     {
         return $this->hasMany(SavedSearch::class);
+    }
+
+    /**
+     * The "booted" method of the model.
+     */
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new SameStore);
     }
 }
