@@ -14,6 +14,7 @@ class ProductObserver
     public function creating(Product $product)
     {
         $product->addBlamables();
+        $product->store_id ??= request()->user()?->store_id;
     }
 
     /**
