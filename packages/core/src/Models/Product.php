@@ -25,6 +25,7 @@ use Lunar\Base\Traits\Searchable;
 use Lunar\Database\Factories\ProductFactory;
 use Lunar\Jobs\Products\Associations\Associate;
 use Lunar\Jobs\Products\Associations\Dissociate;
+use Lunar\Models\Scopes\SameStore;
 use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 
 /**
@@ -210,5 +211,13 @@ class Product extends BaseModel implements SpatieHasMedia
     public function store(): BelongsTo
     {
         return $this->belongsTo(Store::class);
+    }
+
+    /**
+     * The "booted" method of the model.
+     */
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new SameStore);
     }
 }
