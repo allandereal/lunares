@@ -35,6 +35,7 @@ class Staff extends Authenticatable
         'admin',
         'email',
         'password',
+        'store_id',
     ];
 
     protected $guard_name = 'staff';
