@@ -7,6 +7,7 @@ use Lunar\FieldTypes\Text;
 use Lunar\Models\Brand;
 use Lunar\Models\Product;
 use Lunar\Models\ProductType;
+use Lunar\Models\Store;
 
 class ProductFactory extends Factory
 {
@@ -18,6 +19,7 @@ class ProductFactory extends Factory
             'product_type_id' => ProductType::factory(),
             'status' => 'published',
             'brand_id' => Brand::factory()->create()->id,
+            'store_id' => Store::factory(),
             'attribute_data' => collect([
                 'name' => new Text($this->faker->name),
                 'description' => new Text($this->faker->sentence),

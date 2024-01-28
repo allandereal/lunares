@@ -7,10 +7,11 @@ use Lunar\FieldTypes\Text;
 use Lunar\Models\Brand;
 use Lunar\Models\Product;
 use Lunar\Models\ProductType;
+use Lunar\Models\Store;
 
 class StoreFactory extends Factory
 {
-    protected $model = Product::class;
+    protected $model = Store::class;
 
     public function definition(): array
     {
