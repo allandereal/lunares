@@ -22,4 +22,22 @@ abstract class BaseModel extends Model
             $this->setConnection($connection);
         }
     }
+
+    /**
+     * Add created_by and updated_by fields.
+     */
+    public function addBlamables()
+    {
+        $this->created_by = auth()->id() ?? null;
+        $this->updated_by = auth()->id() ?? null;
+    }
+
+    /**
+     * Add either created_by or updated_by fields.
+     * @Attribute string $field creator field
+     */
+    public function addBlamable($field = 'created_by')
+    {
+        $this->{$field} = auth()->id() ?? null;
+    }
 }
