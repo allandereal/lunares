@@ -15,6 +15,7 @@ use Lunar\Base\Traits\HasPrices;
 use Lunar\Base\Traits\HasTranslations;
 use Lunar\Base\Traits\LogsActivity;
 use Lunar\Database\Factories\ProductVariantFactory;
+use Lunar\Models\Scopes\SameStore;
 use Spatie\LaravelBlink\BlinkFacade as Blink;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -201,5 +202,13 @@ class ProductVariant extends BaseModel implements Purchasable
         return $this->images->first(function ($media) {
             return (bool) $media->pivot?->primary;
         }) ?: $this->product->thumbnail;
+    }
+
+    /**
+     * The "booted" method of the model.
+     */
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new SameStore);
     }
 }
