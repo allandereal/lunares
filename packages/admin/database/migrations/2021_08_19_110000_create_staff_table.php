@@ -14,6 +14,7 @@ class CreateStaffTable extends Migration
             $table->string('firstname')->index();
             $table->string('lastname')->index();
             $table->string('email')->unique();
+            $table->unsignedBigInteger('store_id')->nullable()->index();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
